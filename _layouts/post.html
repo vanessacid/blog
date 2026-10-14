@@ -1,0 +1,78 @@
+---
+layout: default
+---
+{%- assign cat = site.data.categorias[page.categoria] -%}
+<article class="entrada">
+  <header class="entrada-hero">
+    <div class="entrada-hero-in">
+      <nav class="migas" aria-label="Estás aquí">
+        <a href="{{ '/' | relative_url }}">Blog</a><span aria-hidden="true">›</span><span>{{ page.categoria }}</span>
+      </nav>
+      <h1 class="entrada-titulo">{{ page.titular | default: page.title }}</h1>
+      <p class="entrada-intro">{{ page.intro | default: page.description }}</p>
+      <div class="entrada-meta">
+        <img src="{{ '/assets/img/vanessa-cid.jpg' | relative_url }}" alt="" width="40" height="40">
+        <span>Por <strong>Vanessa Cid</strong><br>{% include fecha.html fecha=page.date %} · {% include lectura.html post=page %}{% if page.herramienta %} · ⏱ 5 min para hacerla{% endif %}</span>
+      </div>
+    </div>
+  </header>
+
+  {% if page.herramienta == "auditoria" %}
+  <section class="herramienta" aria-label="Auditoría interactiva">
+    {% include herramientas/auditoria.html %}
+  </section>
+  {% endif %}
+
+  <div class="entrada-cuerpo prosa">
+{{ content }}
+  </div>
+
+  <div class="entrada-final">
+    {% if page.cta_titulo %}
+    <aside class="cta-final">
+      <h2>{{ page.cta_titulo }}</h2>
+      <p>{{ page.cta_texto }}</p>
+      <a class="boton boton-claro" href="{{ page.cta_url }}">{{ page.cta_boton }}</a>
+    </aside>
+    {% endif %}
+    {% unless page.herramienta %}{% include cta-auditoria.html %}{% endunless %}
+
+    <aside class="autora">
+      <img src="{{ '/assets/img/vanessa-cid.jpg' | relative_url }}" alt="Vanessa Cid" width="88" height="88" loading="lazy">
+      <div>
+        <p class="autora-nombre">Vanessa Cid</p>
+        <p>Ayudo a negocios y marcas personales a usar Instagram, el contenido y la IA con estrategia, para que se vean, conecten y vendan. Sin rodeos.</p>
+        <a href="https://wa.me/{{ site.whatsapp }}?text={{ 'Hola, Vanessa. He leído tu artículo y me gustaría hablar de mi negocio.' | uri_escape }}" target="_blank" rel="noopener">Escríbeme por WhatsApp →</a>
+      </div>
+    </aside>
+  </div>
+</article>
+
+{%- assign relacionadas = site.posts | where: "categoria", page.categoria | where_exp: "p", "p.url != page.url" -%}
+{%- if relacionadas.size < 3 -%}
+  {%- assign relacionadas = site.posts | where_exp: "p", "p.url != page.url" -%}
+{%- endif -%}
+{%- if relacionadas.size > 0 -%}
+<section class="relacionadas" aria-labelledby="titulo-relacionadas">
+  <div class="contenedor">
+    <h2 id="titulo-relacionadas" class="seccion-titulo">Sigue leyendo</h2>
+    <div class="rejilla">
+      {%- for p in relacionadas limit: 3 -%}
+      {% include tarjeta.html post=p %}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif %}
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Inicio","item":"{{ site.web_principal }}/"},
+{"@type":"ListItem","position":2,"name":"Blog","item":"{{ '/' | absolute_url }}"},
+{"@type":"ListItem","position":3,"name":{{ page.title | jsonify }},"item":"{{ page.url | absolute_url }}"}]}
+</script>
+{% if page.faq %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for f in page.faq %}{"@type":"Question","name":{{ f.p | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ f.r | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}]}
+</script>
+{% endif %}

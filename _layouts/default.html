@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="es">
+<head>
+{% include head.html %}
+</head>
+<body>
+{% include header.html %}
+<main id="contenido">
+{{ content }}
+</main>
+{% include footer.html %}
+{% if page.herramienta %}<script src="{{ '/assets/js/' | append: page.herramienta | append: '.js' | relative_url }}" defer></script>{% endif %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Cada categoría tiene su color de portada en las tarjetas del blog.
+# Para crear una categoría nueva, añade un bloque igual con su nombre.
+# fondo / acento: colores de la portada · texto: color del emoji y detalles
+
+Instagram:
+  fondo: "#FBEAF2"
+  acento: "#F07BAE"
+Estrategia:
+  fondo: "#F5E8E0"
+  acento: "#C85A1E"
+Contenido:
+  fondo: "#F5F0E8"
+  acento: "#C85A1E"
+Herramientas:
+  fondo: "#1A1714"
+  acento: "#F07BAE"
+IA:
+  fondo: "#EDE6D8"
+  acento: "#1A1714"

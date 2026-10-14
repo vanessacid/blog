@@ -1,0 +1,7 @@
+{%- if include.post.lectura -%}
+{{ include.post.lectura }} min
+{%- else -%}
+{%- assign palabras = include.post.content | strip_html | number_of_words -%}
+{%- assign minutos = palabras | divided_by: 200 | plus: 1 -%}
+{{ minutos }} min
+{%- endif -%}

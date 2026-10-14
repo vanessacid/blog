@@ -1,0 +1,21 @@
+{%- assign p = include.post -%}
+{%- assign cat = site.data.categorias[p.categoria] -%}
+<article class="tarjeta{% if include.grande %} tarjeta-grande{% endif %}" data-categoria="{{ p.categoria }}">
+  <a class="tarjeta-enlace" href="{{ p.url | relative_url }}">
+    <div class="tarjeta-portada" style="--fondo:{{ cat.fondo | default: '#F5F0E8' }};--acento:{{ cat.acento | default: '#C85A1E' }}" aria-hidden="true">
+      {%- if p.portada -%}
+      <img src="{{ p.portada | relative_url }}" alt="" loading="lazy">
+      {%- else -%}
+      <span class="tarjeta-emoji">{{ p.emoji | default: "✨" }}</span>
+      {%- endif -%}
+      {%- if p.herramienta -%}<span class="tarjeta-sello">Gratis · interactiva</span>{%- endif -%}
+    </div>
+    <div class="tarjeta-cuerpo">
+      <span class="chip">{{ p.categoria }}</span>
+      <h3 class="tarjeta-titulo">{{ p.title }}</h3>
+      <p class="tarjeta-resumen">{{ p.description }}</p>
+      <p class="tarjeta-meta">{% include fecha.html fecha=p.date %} · {% include lectura.html post=p %}</p>
+      <span class="tarjeta-mas">{% if p.herramienta %}Hacer la auditoría{% else %}Leer más{% endif %} →</span>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,74 @@
+<div class="aud" id="auditoria">
+  <div class="aud-progreso" aria-hidden="true">
+    <div class="aud-progreso-in">
+      <span id="aud-cuenta">0 de 26 marcados</span>
+      <a href="#aud-resultado">Ver mi nota ↓</a>
+    </div>
+    <div class="aud-barra"><span id="aud-barra"></span></div>
+  </div>
+
+  <div class="aud-in">
+    <div class="aud-nota">
+      <img src="{{ '/assets/img/vanessa-cid.jpg' | relative_url }}" alt="" width="52" height="52">
+      <div>
+        <p>Esta es la misma checklist que uso con mis clientes. El truco: <strong>haz como que no es tu cuenta</strong>. Imagina que eres un posible cliente que entra por primera vez y marca solo lo que de verdad se cumple. Si dudas con algún punto, toca <strong>💡 Consejo</strong>.</p>
+        <p class="aud-firma">— Vanessa</p>
+      </div>
+    </div>
+
+    <ol class="aud-pasos">
+      <li>Abre tu perfil desde otra cuenta o pídele el móvil a alguien.</li>
+      <li>Recórrelo 1 minuto sin pensar mucho, como un desconocido.</li>
+      <li>Vuelve aquí y marca. Al final ves tu nota y recibes tu plan.</li>
+    </ol>
+
+    <div id="aud-bloques"></div>
+
+    <section class="aud-resultado" id="aud-resultado" aria-live="polite">
+      <span class="aud-eyebrow">Tu resultado</span>
+      <div class="aud-nota-final"><strong id="aud-nota">0</strong><span>/ 10</span></div>
+      <div class="aud-estrellas" id="aud-estrellas" aria-hidden="true"></div>
+      <p class="aud-veredicto" id="aud-veredicto">Empieza a marcar ☝️</p>
+      <p class="aud-mensaje" id="aud-mensaje">Ve bloque por bloque. Tu nota se calcula sola.</p>
+      <div class="aud-barras" id="aud-barras"></div>
+
+      <div class="aud-form" id="aud-formbox">
+        <div class="aud-form-intro">
+          <h3>📩 Recibe tu plan de mejora</h3>
+          <p>Te lo envío al correo para que lo tengas a mano cuando te pongas con tu perfil:</p>
+          <ul>
+            <li>💪 Lo que ya haces bien</li>
+            <li>🎯 Tu misión de hoy: una sola mejora, paso a paso</li>
+            <li>📅 Tu plan para esta semana (de tus <strong id="aud-npend">26</strong> puntos pendientes)</li>
+          </ul>
+        </div>
+        <form id="aud-form" novalidate>
+          <label class="aud-campo">Tu nombre
+            <input id="aud-nombre" type="text" autocomplete="given-name" required>
+          </label>
+          <label class="aud-campo">Tu correo
+            <input id="aud-email" type="email" inputmode="email" autocomplete="email" required>
+          </label>
+          <label class="aud-campo">Tu Instagram <span>(opcional)</span>
+            <input id="aud-instagram" type="text" autocapitalize="none" autocorrect="off" placeholder="@tunegocio">
+          </label>
+          <div class="aud-hp" aria-hidden="true"><label>No rellenar <input id="aud-web" tabindex="-1" autocomplete="off"></label></div>
+          <label class="aud-legal">
+            <input type="checkbox" id="aud-acepto" required>
+            <span>Acepto la <a href="{{ '/privacidad/' | relative_url }}" target="_blank" rel="noopener">política de privacidad</a> y que Vanessa Cid me envíe mi informe y algún consejo más por correo. Puedo darme de baja cuando quiera.</span>
+          </label>
+          <p class="aud-error" id="aud-error" role="alert"></p>
+          <button class="aud-btn" type="submit" id="aud-enviar">Envíame mi plan</button>
+        </form>
+        <div class="aud-gracias">
+          <p class="aud-gracias-emoji">🧡</p>
+          <h3>¡Ya va de camino!</h3>
+          <p>Revisa tu correo en unos minutos. Si no lo ves, mira en promociones o spam.</p>
+        </div>
+      </div>
+
+      <a class="aud-btn aud-btn-sec" id="aud-wa" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">💬 Prefiero que lo revisemos juntos</a>
+      <button class="aud-reset" id="aud-reset" type="button">Empezar de nuevo</button>
+    </section>
+  </div>
+</div>
