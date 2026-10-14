@@ -4,11 +4,11 @@
 {% include head.html %}
 </head>
 <body>
-{% include header.html %}
+{% if page.colaboracion %}{% include header-conjunto.html %}{% else %}{% include header.html %}{% endif %}
 <main id="contenido">
 {{ content }}
 </main>
-{% include footer.html %}
+{% if page.colaboracion %}{% include footer-conjunto.html %}{% else %}{% include footer.html %}{% endif %}
 {% if page.herramienta %}<script src="{{ '/assets/js/' | append: page.herramienta | append: '.js' | relative_url }}" defer></script>{% endif %}
 </body>
 </html>

@@ -35,6 +35,20 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .cabecera-cta:hover{opacity:.88}
 @media (max-width:820px){.cabecera-nav{display:none}.cabecera-cta{margin-left:auto}}
 
+/* Cabecera y pie conjuntos (Vanessa Cid × ENPLAN) */
+.cabecera-conjunta{background:rgba(255,255,255,.96)}
+.dueto-cabecera{display:flex;align-items:center;gap:12px}
+.dueto-cabecera img{height:28px;width:auto}
+.dueto-cabecera a + .dueto-x + a img{height:32px}
+.dueto-x{font-family:var(--fd);font-size:20px;color:var(--mid);line-height:1}
+.cabecera-etiqueta{margin-left:auto;background:#D9D4FF;color:#17161F;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 12px;border-radius:100px;white-space:nowrap}
+.pie-conjunto{background:#17161F}
+.pie-dueto{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pie-dueto img{height:30px;width:auto;margin-bottom:10px;background:var(--cream);padding:6px 10px;border-radius:10px;box-sizing:content-box}
+.pie-dueto p{margin-bottom:6px}
+.pie-dueto a{color:#D9D4FF;font-weight:700;text-decoration:none}
+@media (max-width:520px){.pie-dueto{grid-template-columns:1fr}.dueto-cabecera img{height:22px}.dueto-cabecera a + .dueto-x + a img{height:26px}.cabecera-etiqueta{display:none}}
+
 /* Elementos comunes */
 .etiqueta{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
 .chip{display:inline-block;background:var(--orange-light);color:var(--orange);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px}

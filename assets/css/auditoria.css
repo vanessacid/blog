@@ -1,5 +1,5 @@
 /* Auditoría de Instagram · solo se carga en su entrada */
-.herramienta{background:var(--cream);padding:0 0 48px}
+.herramienta{--lila:#D9D4FF;--lila-suave:#EEEBFF;--ink:#17161F;background:var(--cream);padding:0 0 48px}
 .aud-in{max-width:var(--lectura);margin:0 auto;padding:24px 16px 0}
 
 /* Progreso fijo bajo la cabecera */
@@ -22,12 +22,12 @@
 /* Bloques */
 .aud-bloque{background:var(--white);border-radius:22px;margin:16px 0;border:1px solid var(--line);overflow:hidden;scroll-margin-top:140px}
 .aud-bloque header{padding:20px 18px 6px;display:flex;gap:12px;align-items:flex-start}
-.aud-num{flex:0 0 40px;height:40px;border-radius:12px;background:var(--pink-light);color:var(--dark);font-family:var(--fd);font-weight:900;display:grid;place-items:center;font-size:18px;transition:all .2s}
+.aud-num{flex:0 0 40px;height:40px;border-radius:12px;background:var(--lila);color:var(--dark);font-family:var(--fd);font-weight:900;display:grid;place-items:center;font-size:18px;transition:all .2s}
 .aud-bloque.completo .aud-num{background:var(--orange);color:var(--white)}
 .aud-bloque h2{font-family:var(--fd);font-size:21px;font-weight:700;line-height:1.2}
 .aud-sub{font-size:14px;color:var(--mid);margin-top:3px}
 .aud-contador{margin-left:auto;font-size:13px;font-weight:700;color:var(--mid);white-space:nowrap;padding-top:6px}
-.aud-aviso{margin:4px 18px 10px;font-size:14px;color:var(--mid);padding-left:12px;border-left:3px solid var(--pink)}
+.aud-aviso{margin:4px 18px 10px;font-size:14px;color:var(--mid);padding-left:12px;border-left:3px solid var(--lila)}
 .aud-items{list-style:none;padding:2px 10px 12px}
 .aud-item + .aud-item{border-top:1px solid var(--line)}
 .aud-fila{display:flex;align-items:center;gap:10px;padding:10px 6px;min-height:56px}
@@ -37,8 +37,8 @@
 .aud-item.on .aud-caja{background:var(--orange);border-color:var(--orange)}
 .aud-item.on .aud-caja svg{opacity:1;transform:scale(1)}
 .aud-item.on .aud-check span:last-child{color:var(--mid)}
-.aud-tipbtn{flex:0 0 auto;font-size:12px;font-weight:700;padding:8px 10px;border-radius:100px;background:var(--pink-light);white-space:nowrap}
-.aud-tipbtn[aria-expanded="true"]{background:var(--dark);color:var(--white)}
+.aud-tipbtn{flex:0 0 auto;font-size:12px;font-weight:700;padding:8px 10px;border-radius:100px;background:var(--lila-suave);white-space:nowrap}
+.aud-tipbtn[aria-expanded="true"]{background:var(--ink);color:var(--white)}
 .aud-tip{display:none;margin:0 6px 12px 44px;padding:12px 14px;background:var(--orange-light);border-radius:14px;font-size:14.5px;line-height:1.55;color:var(--dark)}
 .aud-tip.open{display:block;animation:aud-in .25s ease}
 @keyframes aud-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
@@ -49,12 +49,12 @@
 .aud-op:last-child{grid-column:1/-1}
 
 /* Resultado */
-.aud-resultado{background:var(--dark);color:var(--cream);border-radius:28px;padding:28px 20px;margin:24px 0 0;scroll-margin-top:140px}
-.aud-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.aud-resultado{position:relative;background:var(--ink);color:var(--cream);border-radius:28px;padding:28px 20px;margin:24px 0 0;scroll-margin-top:140px}
+.aud-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lila)}
 .aud-nota-final{display:flex;align-items:baseline;gap:6px;margin:10px 0 2px;font-family:var(--fd)}
 .aud-nota-final strong{font-size:80px;line-height:1;font-weight:900;color:var(--white)}
 .aud-nota-final span{font-size:26px;opacity:.6}
-.aud-estrellas{font-size:22px;letter-spacing:3px;color:var(--pink);margin-bottom:8px}
+.aud-estrellas{font-size:22px;letter-spacing:3px;color:var(--lila);margin-bottom:8px}
 .aud-veredicto{font-family:var(--fd);font-size:24px;font-weight:700;color:var(--white);margin-bottom:6px}
 .aud-mensaje{color:rgba(245,240,232,.78)}
 .aud-barras{display:grid;gap:10px;margin:22px 0 6px}
@@ -88,3 +88,8 @@
 .aud-form.enviado form,.aud-form.enviado .aud-form-intro{display:none}
 .aud-form.enviado .aud-gracias{display:block}
 @media (min-width:600px){.aud-opciones{grid-template-columns:repeat(3,1fr)}.aud-op:last-child{grid-column:auto}}
+
+/* Bocadillo de chat de ENPLAN en la tarjeta del resultado */
+.aud-resultado::after{content:"•••";position:absolute;top:22px;right:20px;background:#FF5B2E;color:#fff;font-weight:900;letter-spacing:2px;font-size:14px;line-height:1;padding:8px 12px 10px;border-radius:14px 14px 14px 4px}
+.aud-firma-dueto{display:flex;align-items:center;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(245,240,232,.12);font-size:13px;color:rgba(245,240,232,.6)}
+.aud-firma-dueto a{color:var(--lila);font-weight:700}

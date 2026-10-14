@@ -5,14 +5,14 @@ layout: default
 <article class="entrada">
   <header class="entrada-hero">
     <div class="entrada-hero-in">
-      <nav class="migas" aria-label="Estás aquí">
+      {% unless page.colaboracion %}<nav class="migas" aria-label="Estás aquí">
         <a href="{{ '/' | relative_url }}">Blog</a><span aria-hidden="true">›</span><span>{{ page.categoria }}</span>
-      </nav>
+      </nav>{% endunless %}
       <h1 class="entrada-titulo">{{ page.titular | default: page.title }}</h1>
       <p class="entrada-intro">{{ page.intro | default: page.description }}</p>
       <div class="entrada-meta">
         <img src="{{ '/assets/img/vanessa-cid.jpg' | relative_url }}" alt="" width="40" height="40">
-        <span>Por <strong>Vanessa Cid</strong><br>{% include fecha.html fecha=page.date %} · {% include lectura.html post=page %}{% if page.herramienta %} · ⏱ 5 min para hacerla{% endif %}</span>
+        <span>Por <strong>Vanessa Cid</strong>{% if page.colaboracion == "enplan" %} con <strong>ENPLAN Comunicación</strong>{% endif %}<br>{% include fecha.html fecha=page.date %} · {% include lectura.html post=page %}{% if page.herramienta %} · ⏱ 5 min para hacerla{% endif %}</span>
       </div>
     </div>
   </header>
@@ -37,14 +37,14 @@ layout: default
     {% endif %}
     {% unless page.herramienta %}{% include cta-auditoria.html %}{% endunless %}
 
-    <aside class="autora">
+    {% unless page.colaboracion %}<aside class="autora">
       <img src="{{ '/assets/img/vanessa-cid.jpg' | relative_url }}" alt="Vanessa Cid" width="88" height="88" loading="lazy">
       <div>
         <p class="autora-nombre">Vanessa Cid</p>
         <p>Ayudo a negocios y marcas personales a usar Instagram, el contenido y la IA con estrategia, para que se vean, conecten y vendan. Sin rodeos.</p>
         <a href="https://wa.me/{{ site.whatsapp }}?text={{ 'Hola, Vanessa. He leído tu artículo y me gustaría hablar de mi negocio.' | uri_escape }}" target="_blank" rel="noopener">Escríbeme por WhatsApp →</a>
       </div>
-    </aside>
+    </aside>{% endunless %}
   </div>
 </article>
 
@@ -52,7 +52,7 @@ layout: default
 {%- if relacionadas.size < 3 -%}
   {%- assign relacionadas = site.posts | where_exp: "p", "p.url != page.url" -%}
 {%- endif -%}
-{%- if relacionadas.size > 0 -%}
+{%- if relacionadas.size > 0 and page.colaboracion == nil -%}
 <section class="relacionadas" aria-labelledby="titulo-relacionadas">
   <div class="contenedor">
     <h2 id="titulo-relacionadas" class="seccion-titulo">Sigue leyendo</h2>

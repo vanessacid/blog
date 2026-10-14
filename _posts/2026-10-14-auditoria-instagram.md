@@ -6,6 +6,7 @@ intro: "Haz la auto-auditoría de tu perfil en 5 minutos, como lo vería un clie
 categoria: Herramientas
 emoji: "🔍"
 herramienta: auditoria
+colaboracion: enplan
 destacado: true
 lectura: 3
 faq:
