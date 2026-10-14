@@ -1,0 +1,58 @@
+# ─────────────────────────────────────────────
+#  Blog de Vanessa Cid · vanessacid.com/blog/
+#  Este repositorio solo contiene el blog. Cambiar algo aquí
+#  no afecta al resto de vanessacid.com.
+# ─────────────────────────────────────────────
+
+title: Blog de Vanessa Cid
+tagline: Marketing, Instagram e IA para negocios
+description: Estrategia práctica de Instagram, contenido e IA para negocios que quieren verse, conectar y vender. Sin rodeos y sin teoría innecesaria.
+url: https://vanessacid.com
+baseurl: /blog
+lang: es
+locale: es_ES
+timezone: Europe/Madrid
+
+author:
+  name: Vanessa Cid
+  url: https://vanessacid.com/
+
+# Datos para Google (marca y redes)
+logo: /assets/img/logo-vanessa-cid.svg
+social:
+  name: Vanessa Cid
+  links:
+    - https://instagram.com/soyvanessacid
+    - https://www.linkedin.com/in/soyvanessacid/
+    - https://www.youtube.com/channel/UCgP1coAe6dlNWtLlqZvvuew
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      image: /assets/img/vanessa-cid.jpg
+
+# Contacto
+whatsapp: "34611789200"
+web_principal: https://vanessacid.com
+
+# Direcciones limpias: vanessacid.com/blog/nombre-de-la-entrada/
+permalink: /:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  path: feed.xml
+
+exclude:
+  - LEEME.md
+  - README.md

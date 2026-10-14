@@ -1,0 +1,67 @@
+---
+layout: default
+title: Blog de marketing, Instagram e IA para negocios
+description: Estrategia práctica de Instagram, contenido e IA para negocios que quieren verse, conectar y vender. Artículos, guías y herramientas gratis de Vanessa Cid.
+---
+{%- assign destacada = site.posts | where: "destacado", true | first -%}
+{%- unless destacada -%}{%- assign destacada = site.posts | first -%}{%- endunless -%}
+{%- assign categorias = site.posts | map: "categoria" | uniq -%}
+
+<section class="blog-hero">
+  <div class="contenedor">
+    <p class="etiqueta">Blog</p>
+    <h1 class="blog-titulo">Marketing &amp; IA <span>sin filtros.</span></h1>
+    <p class="blog-sub">Estrategia práctica de Instagram, contenido e inteligencia artificial para negocios reales. Lo que funciona, explicado claro.</p>
+  </div>
+</section>
+
+<section class="contenedor destacada" aria-label="Destacado">
+  {% include tarjeta.html post=destacada grande=true %}
+</section>
+
+<section class="contenedor listado" aria-labelledby="titulo-listado">
+  <div class="listado-cabecera">
+    <h2 id="titulo-listado" class="seccion-titulo">Todos los artículos</h2>
+    <div class="filtros" role="group" aria-label="Filtrar por tema">
+      <button class="filtro" aria-pressed="true" data-filtro="todas">Todos</button>
+      {%- for c in categorias %}
+      <button class="filtro" aria-pressed="false" data-filtro="{{ c }}">{{ c }}</button>
+      {%- endfor %}
+    </div>
+  </div>
+  <div class="rejilla" id="rejilla">
+    {%- for p in site.posts -%}
+      {%- if p.url != destacada.url -%}
+      {% include tarjeta.html post=p %}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <p class="sin-resultados" id="sin-resultados" hidden>Pronto habrá artículos sobre este tema.</p>
+</section>
+
+<section class="contenedor">
+  <aside class="cta-final cta-oscuro">
+    <h2>¿Prefieres que lo hagamos juntos?</h2>
+    <p>Trabajo con negocios que ya tienen algo bueno, pero sus redes no lo están mostrando. Si ese es tu caso, hablemos.</p>
+    <a class="boton boton-claro" href="https://wa.me/{{ site.whatsapp }}?text={{ 'Hola, Vanessa. Vengo de tu blog y me gustaría hablar de mi negocio.' | uri_escape }}" target="_blank" rel="noopener">💬 Escríbeme por WhatsApp</a>
+  </aside>
+</section>
+
+<script>
+(function(){
+  var botones = document.querySelectorAll('.filtro');
+  var tarjetas = document.querySelectorAll('#rejilla .tarjeta');
+  var vacio = document.getElementById('sin-resultados');
+  botones.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.getAttribute('data-filtro'), visibles = 0;
+      botones.forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+      tarjetas.forEach(function(t){
+        var ok = f === 'todas' || t.getAttribute('data-categoria') === f;
+        t.hidden = !ok; if (ok) visibles++;
+      });
+      vacio.hidden = visibles > 0;
+    });
+  });
+})();
+</script>
